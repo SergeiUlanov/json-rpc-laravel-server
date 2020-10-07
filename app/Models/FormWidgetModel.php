@@ -28,6 +28,8 @@ class FormWidgetModel extends Model
             ->select('page_uid', 'user_name', 'user_text', 'created_at', 'id')
             ->where('page_uid', '=', $pageUID)
             ->orderBy('created_at', 'desc')
+            ->offset(0)
+            ->limit(15)
             ->get();
 
         $recs = array();
