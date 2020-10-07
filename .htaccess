@@ -1,0 +1,30 @@
+AddDefaultCharset UTF-8
+
+#php.ini
+#error_reporting=E_ALL
+#display_errors=On
+
+php_flag display_errors on
+php_value error_reporting 2047
+
+#php_value output_buffering Off
+
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1%{REQUEST_URI} [R=301,QSA,NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+RewriteRule ^(.*)$ public/index.php$1 [L]
+
+
+
+
+
+#-RewriteBase /
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ public/index.php$1 [L]
+
